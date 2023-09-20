@@ -1,5 +1,5 @@
 ...
 
-Proyecto final de Desarrollo Web.
+Proyecto final de Desarrollo Web. Juan Pedro Michero.
 
 ...
