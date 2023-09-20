@@ -1,5 +1,5 @@
 ...
 
-Sitio web acerca de teclados mecánicos custom.
+Proyecto final de Desarrollo Web.
 
 ...
