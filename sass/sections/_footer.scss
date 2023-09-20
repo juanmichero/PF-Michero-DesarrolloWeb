@@ -1,0 +1,53 @@
+// FOOTER
+
+footer {
+    @extend .box-sections;
+    height: 180px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.6fr 1.3fr 0.8fr;
+    grid-template-areas:
+        "copyright . icon-array"
+        ". . ."
+        ". terms .";
+
+    .copyright {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-area: copyright;
+        font-size: 18px;
+        font-style: italic;
+        color: black;
+        margin-left: 10px;
+        margin-top: 7px;
+        width: 290px;
+    }
+
+    .icon-array {
+        grid-area: icon-array;
+        display: flex;
+        justify-content: end;
+        margin-right: 10px;
+        margin-top: 7px;
+
+        .icon {
+            font-size: 15px;
+            color: black;
+            margin-left: 35px;
+            margin-right: 5px;
+        }
+    }
+
+    .terms {
+        grid-area: terms;
+        display: flex;
+        justify-content: space-evenly;
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-size: 17px;
+        }
+    }
+}

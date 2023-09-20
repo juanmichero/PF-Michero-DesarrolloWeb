@@ -1,0 +1,616 @@
+@media (max-width: 1800px) {
+    
+    // GUÍA
+    .content-guia-section3 {
+        margin-top: -25px;
+    }
+
+    .videos-images-guia-section3 {
+        flex-direction: column;
+        margin-top: -10px;
+    }
+
+    .videos-images-guia-section3 img {
+        margin: 10px;
+    }
+
+    .videos-images-guia-section3 iframe {
+        margin: 10px;
+    }
+}
+
+
+@media (max-width: 1760px) {
+
+    // INDEX
+    .index-section2 img {
+        height: 500px;
+        margin: 40px;
+        margin-bottom: -10px;
+    }
+
+    .index-section2 {
+        flex-direction: column;
+        align-content: center;
+        margin-top: -35px;
+    }
+}
+
+
+@media (max-width: 1740px) {
+
+    // GUÍA
+    .images-guia-section1 {
+        flex-direction: column;
+        align-items: center;
+        margin-top: -20px;
+    }
+
+    .images-guia-section1 img {
+        margin: 20px;
+    }
+}
+
+
+@media (max-width: 1680px) {
+
+    // GUÍA
+    .images-guia-section4 {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: -10px;
+    }
+
+    .images-guia-section4 img {
+        margin: 10px;
+    }
+
+    .content-guia-section4 {
+        margin-top: -15px;
+    }
+}
+
+
+@media (max-width: 1600px) {
+
+    // INDEX
+    .index-section3 {
+        flex-direction: column;
+    }
+
+    .index-section3 img {
+        margin-bottom: 20px;
+    }
+
+    .index-section3 p {
+        margin: 15px;
+    }
+
+    .index-section4 {
+        flex-direction: column;
+        margin-bottom: -15px;
+    }
+
+    .images-index-section4 {
+        margin: 20px;
+    }
+
+    .index-section4 iframe {
+        margin: 10px;
+    }
+
+    .index-section6 {
+        flex-direction: column;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    .index-section6 img {
+        margin: 15px;
+    }
+
+    // PROYECTOS
+    .images-proyectos-section1 {
+        flex-direction: column;
+        margin-bottom: -20px;
+    }
+
+    .images-proyectos-section1 img {
+        margin: 15px;
+    }
+
+    .img-sides-proyectos {
+        height: 450px;
+    }
+
+    .img-middle-proyectos {
+        height: 600px;
+    }
+
+    .text-proyectos-section1 p {
+        margin-bottom: 10px;
+    }
+}
+
+
+@media (max-width: 1500px) {
+
+    // GUÍA
+    .videos-guia-section2 {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0px;
+    }
+
+    .videos-guia-section2 iframe {
+        margin: 15px;
+    }
+
+    .content-guia-section3 {
+        margin-top: -50px;
+    }
+}
+
+
+@media (max-width: 1350px) {
+
+    // PROYECTOS
+    .images-proyectos-section2 {
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .images-proyectos-section2 img {
+        margin: 15px;
+    }
+
+    .text-proyectos-section2 p {
+        margin-bottom: 40px;
+    }
+
+    .images-proyectos-section2 img {
+        height: 700px;
+    }
+
+    .images-proyectos-section3-1 {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: -20px;
+    }
+
+    .images-proyectos-section3-1 img {
+        margin: 15px;
+        height: 650px;
+    }
+
+    .text-proyectos-section3 {
+        margin-top: -20px;
+        margin-bottom: -10px;
+    }
+
+    .images-proyectos-section3-2 {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .images-proyectos-section3-2 img {
+        margin: 15px;
+        height: 650px;
+    }
+}
+
+
+@media (max-width: 1307px) {
+
+    // GALERÍA
+    .col-lg img {
+        height: 32vw;
+    }
+
+    .col-lg iframe {
+        width: 48vw;
+        height: 27vw;
+    }
+}
+
+
+@media (max-width: 1260px) {
+
+    // GUÍA
+    .title-guia-section1 {
+        min-width: 40vw;
+    }
+}
+
+
+@media (max-width: 1199px) {
+
+    // GALERÍA
+    .col-lg img {
+        height: 31.7vw;
+    }
+
+    .col-lg iframe {
+        width: 47vw;
+    }
+}
+
+
+@media (max-width: 1180px) {
+
+    // CONTACTO
+    .contacto {
+        flex-direction: column;
+        margin-top: -20px;
+    }
+
+    .contacto form {
+        margin-top: 20px;
+        margin-bottom: -20px;
+    }
+
+    .instagram-post {
+        margin-right: 0px;
+        margin-bottom: 20px;
+    }
+}
+
+
+@media (max-width: 1100px) {
+
+    // GUÍA
+    .text-guia-section1 {
+        width: 90vw;
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    // HEADER
+    header nav ul {
+        display: none;
+    }
+
+    header h1 {
+        width: 83vw;
+    }
+
+    header {
+        height: auto;
+    }
+
+    .navbar {
+        z-index: 99;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border: $bordersections;
+        border-radius: 8px;
+        width: min-content;
+    }
+
+    // FOOTER
+    footer {
+        grid-template-areas:
+            ". icon-array ."
+            ". copyright ."
+            ". terms .";
+
+        .icon-array {
+            justify-content: flex-start;
+        }
+    }
+
+    // INDEX
+    .index-section1 p {
+        width: 80vw;
+    }
+
+    .index-section2 img {
+        height: 50vw;
+    }
+
+    .text-index-section5 {
+        width: 80vw;
+    }
+
+    // GUÍA
+    .text-guia-section2 {
+        width: 90vw;
+    }
+
+    .videos-guia-section2 {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .text-guia-section3 {
+        width: 90vw;
+    }
+
+    // GALERÍA
+    .col-lg img {
+        height: 60vw;
+    }
+
+    .col-lg iframe {
+        width: 90vw;
+        height: 50vw;
+    }
+}
+
+
+@media (max-width: 940px) {
+
+    // GUÍA
+    .text-guia-section4 {
+        width: 85vw;
+    }
+}
+
+
+@media (max-width: 830px) {
+
+    // GUÍA
+    .img-middle-guia {
+        height: 42vw;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    // GUÍA
+    .title-guia-section1 {
+        width: 60vw;
+        height: 100px;
+    }
+
+    .images-guia-section1 img {
+        height: 50vw;
+    }
+
+    .images-guia-section1 .middle-img-guia-section1 {
+        height: 70vw;
+    }
+}
+
+
+@media (max-width: 777px) {
+
+    // GUÍA
+    .videos-images-guia-section3 img {
+        height: 45vw;
+    }
+}
+
+
+@media (max-width: 752px) {
+
+    // PROYECTOS
+    .text-proyectos-section1 p {
+        width: 80vw;
+    }
+
+    .img-sides-proyectos {
+        height: 60vw;
+    }
+
+    .img-middle-proyectos {
+        height: 80vw;
+    }
+
+    .text-proyectos-section2 p {
+        width: 80vw;
+    }
+
+    .images-proyectos-section2 img {
+        height: 93vw;
+    }
+
+    .text-proyectos-section3 p {
+        width: 80vw;
+    }
+
+    .images-proyectos-section3-1 img {
+        height: 86vw;
+    }
+
+    .images-proyectos-section3-2 img {
+        height: 86vw;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    // INDEX
+    .index-section6 img {
+        height: 53vw;
+    }
+
+    // GUÍA
+    .videos-guia-section2 iframe {
+        width: 80vw;
+        height: 45vw;
+    }
+
+    // CONTACTO
+    .contacto p {
+        width: 85vw;
+    }
+}
+
+
+@media (max-width: 690px) {
+
+    // INDEX
+    .index-section4 iframe {
+        width: 81vw;
+        height: 46vw;
+    }
+
+    // GUÍA
+    .index-section3 p {
+        width: 80vw;
+    }
+}
+
+
+@media (max-width: 663px) {
+
+    // GUÍA
+    .videos-images-guia-section3 iframe {
+        width: 75vw;
+        height: 48vw;
+    }
+}
+
+
+@media (max-width: 638px) {
+
+    // HEADER
+    header h1 {
+        width: 50vw;
+    }
+}
+
+
+@media (max-width: 635px) {
+
+    // GUÍA
+    .img-sides-guia {
+        height: 45vw;
+    }
+}
+
+
+@media (max-width: 630px) {
+
+    // CONTACTO
+    .contacto-name-surname {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .contacto-surname {
+        margin-top: 25px;
+        width: 280px;
+    }
+
+    .contacto-comment {
+        width: 85vw;
+    }
+}
+
+
+@media (max-width: 586px) {
+
+    // INDEX
+    .images-index-section3 {
+        height: 97vw;
+    }
+
+    .images-index-section4 {
+        height: 94vw;
+    }
+}
+
+
+@media (max-width: 511px) {
+
+    // GUÍA
+    .title-guia-section1 {
+        height: 150px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    // GUÍA
+    .title-guia-section2 {
+        width: 60vw;
+        height: 100px;
+    }
+
+    // CONTACTO
+    .instagram-post {
+        width: 80vw;
+    }
+}
+
+
+@media (max-width: 407px) {
+
+    // GUÍA
+    .title-guia-section1 {
+        width: 60vw;
+        height: 190px;
+    }
+}
+
+
+@media (max-width: 366px) {
+
+    // HEADER
+    header h1 div a {
+        font-size: 40px;
+    }
+}
+
+
+@media (max-width: 348px) {
+
+    // FOOTER
+    footer {
+        .copyright {
+            width: 280px;
+            text-align: center;
+        }
+    }
+
+    .icon-array {
+        margin-left: -10px;
+    }
+}
+
+
+@media (max-width: 340px) {
+
+    // GUÍA
+    .title-guia-section2 {
+        width: 60vw;
+        height: 130px;
+    }
+}
+
+
+@media (max-width: 330px) {
+
+    // CONTACTO
+    .contacto-name,
+    .contacto-surname,
+    .contacto-email {
+        width: 85vw;
+    }
+}
+
+
+@media (max-width: 326px) {
+
+    // FOOTER
+    footer {
+        .copyright {
+            margin-left: -10px;
+        }
+    }
+
+    .icon-array {
+        margin-left: -20px;
+    }
+}

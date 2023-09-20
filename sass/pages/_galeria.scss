@@ -1,0 +1,20 @@
+// GALERÍA
+
+.col-lg {
+    img {
+        height: 21vw;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        box-shadow: $boxshadowsimg;
+    }
+
+    iframe {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 31vw;
+        height: 17vw;
+        box-shadow: $boxshadowsimg;
+    }
+}
+
+

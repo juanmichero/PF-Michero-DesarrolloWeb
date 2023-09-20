@@ -1,0 +1,116 @@
+// INDEX
+
+
+/* SECTION 1 */
+
+.index-section1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+
+    h2 {
+        @extend .box-title-index;
+        position: relative;
+        top: 15px;
+        font-size: 35px;
+        font-style: italic;
+        height: 65px;
+    }
+
+    p {
+        @extend .box-text-index;
+        font-size: 25px;
+        width: 800px;
+    }
+
+}
+
+/* SECTION 2 */
+
+.index-section2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 15px;
+    margin: 20px;
+    margin-top: 5px;
+}
+
+.images-index-section2 {
+    height: 380px;
+    box-shadow: $boxshadowsimg;
+}
+
+/* SECTION 3 */
+
+.index-section3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: -10px;
+
+    p {
+        @extend .box-text-index;
+        font-size: 22px;
+        width: 550px;
+        margin-top: -90px;
+    }
+}
+
+.images-index-section3 {
+    height: 570px;
+    margin-top: 20px;
+    box-shadow: $boxshadowsimg;
+}
+
+/* SECTION 4 */
+
+.index-section4 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    iframe {
+        box-shadow: $boxshadowsimg;
+    }
+}
+
+.images-index-section4 {
+    height: 550px;
+    margin-top: -80px;
+    box-shadow: $boxshadowsimg;
+}
+
+/* SECTION 5 */
+
+.index-section5 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.text-index-section5 {
+    @extend .box-text-index;
+    font-size: 22px;
+    width: 800px;
+    margin: 30px;
+}
+
+/* SECTION 6 */
+
+.index-section6 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px;
+    margin-bottom: 40px;
+
+    img {
+        height: 370px;
+        box-shadow: $boxshadowsimg;
+    }
+}

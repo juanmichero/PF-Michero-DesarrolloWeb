@@ -1,0 +1,21 @@
+// Variables, Extend
+@import './assets/variables';
+@import './assets/extend';
+
+// Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Secciones/Sections
+@import './sections/header';
+@import './sections/main';
+@import './sections/footer';
+
+// Páginas/Pages
+@import './pages/index';
+@import './pages/guia';
+@import './pages/proyectos';
+@import './pages/galeria';
+@import './pages/contacto';
+
+// Media Querys
+@import './assets/mediaquery';

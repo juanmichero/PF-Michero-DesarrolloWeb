@@ -1,0 +1,58 @@
+.box-sections {
+    background-color: $green;
+    border: $bordersections;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.box-text {
+    background-color: $grey;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: $boxshadowstext;
+}
+
+.box-title {
+    background-color: $grey;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: $boxshadowstitle;
+    color: rgb(0, 0, 0);
+}
+
+.box-text-index {
+    background-color: $grey;
+    border-radius: 5px;
+    padding: 14px;
+    text-align: center;
+    box-shadow: $boxshadowstext;
+}
+
+.box-title-index {
+    background-color: $grey;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: $boxshadowstitle;
+    color: rgb(0, 0, 0);
+}
+
+.box-text-contacto {
+    background-color: #B8C5D6;
+    border-radius: 5px;
+    padding: 5px;
+    width: 600px;
+    box-shadow: $boxshadowstext;
+}
+
+.box-contacto {
+    height: 40px;
+    margin-top: 25px;
+    border-radius: 4px;
+    padding: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: $boxshadowstext;
+}

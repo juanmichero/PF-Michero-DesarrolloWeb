@@ -1,0 +1,58 @@
+// HEADER
+
+header {
+    @extend .box-sections;
+    height: 135px;
+
+    h1 {
+        width: 720px;
+
+        div {
+            display: flex;
+
+            a {
+                font-family: monospace;
+                font-size: 50px;
+                font-weight: 600;
+                text-decoration: none;
+                color: black;
+                margin-left: 8px;
+            }
+        }
+    }
+}
+
+.navbar {
+    background-color: $green !important;
+    position: relative;
+    top: -10px;
+}
+
+.navbar-nav li {
+    padding-right: 20px;
+    padding-left: 20px;
+    height: 2.5rem;
+}
+
+.nav-item a {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+
+    &:hover {
+        color: white;
+    }
+}
+
+.nav-link {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-toggler {
+    border-color: transparent;
+}
+
+.navbar-toggler-icon {
+    border-color: transparent;
+}
