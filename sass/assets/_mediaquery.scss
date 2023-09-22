@@ -25,7 +25,7 @@
         margin-top: -35px;
 
         img {
-            height: 500px;
+            height: 450px;
             margin: 40px;
             margin-bottom: -10px;
         }
@@ -60,6 +60,10 @@
         img {
             margin: 10px;
         }
+    }
+
+    .img-sides-guia {
+        height: 400px;
     }
 
     .content-guia-section4 {
@@ -191,13 +195,13 @@
     // GALERÍA
     .col-lg {
         img {
-            height: 32vw;
+            height: 31.7vw;
         }
 
         iframe {
-            width: 48vw;
-            height: 27vw;
-        }
+            width: 47vw;
+            height: 26vw;
+        } 
     }
 }
 
@@ -207,21 +211,6 @@
     // GUÍA
     .title-guia-section1 {
         min-width: 40vw;
-    }
-}
-
-
-@media (max-width: 1199px) {
-
-    // GALERÍA
-    .col-lg {
-        img {
-            height: 31.7vw;
-        }
-
-        iframe {
-            width: 47vw;
-        } 
     }
 }
 
@@ -292,12 +281,7 @@
         }
     }
 
-    // INDEX
-    .index-section2 {
-        img {
-            height: 50vw;
-        }
-    }
+    
 
     .text-index-section5, .index-section1 p {
         width: 80vw;
@@ -320,18 +304,25 @@
     // GALERÍA
     .col-lg {
         img {
-            height: 60vw;
+            height: 55vw;
         }
 
         iframe {
-            width: 90vw;
-            height: 50vw;
+            width: 83vw;
+            height: 55vw;
         }
     } 
 }
 
 
 @media (max-width: 940px) {
+
+    // INDEX
+    .index-section2 {
+        img {
+            height: 48vw;
+        }
+    }
 
     // GUÍA
     .text-guia-section4 {
@@ -362,21 +353,21 @@
             height: 50vw;
         }
     }
-}
 
-
-@media (max-width: 777px) {
-
-    // GUÍA
-    .videos-images-guia-section3 {
-        img {
-            height: 45vw;
-        }
+    .img-sides-guia {
+        height: 50vw;
     }
 }
 
 
 @media (max-width: 752px) {
+
+    // GUÍA
+    .videos-images-guia-section3 {
+        img {
+            height: 46.5vw;
+        }
+    }
 
     // PROYECTOS
     .img-sides-proyectos {
@@ -410,6 +401,19 @@
 @media (max-width: 700px) {
 
     // INDEX
+    .index-section3 {
+        p {
+            width: 78vw;
+        }
+    }
+
+    .index-section4 {
+        iframe {
+            width: 80vw;
+            height: 45vw;
+        }
+    }
+
     .index-section6 {
         img {
             height: 53vw;
@@ -433,37 +437,6 @@
 }
 
 
-@media (max-width: 690px) {
-
-    // INDEX
-    .index-section4 {
-        iframe {
-            width: 81vw;
-            height: 46vw;
-        }
-    }
-
-    // GUÍA
-    .index-section3 {
-        p {
-            width: 80vw;
-        }
-    }
-}
-
-
-@media (max-width: 663px) {
-
-    // GUÍA
-    .videos-images-guia-section3 {
-        iframe {
-            width: 75vw;
-            height: 48vw;
-        }
-    }
-}
-
-
 @media (max-width: 638px) {
 
     // HEADER
@@ -472,25 +445,26 @@
             width: 50vw;
         }
     }
-}
-
-
-@media (max-width: 635px) {
 
     // GUÍA
-    .img-sides-guia {
-        height: 45vw;
-    }
-
-    .images-guia-section1 {
-        .middle-img-guia-section1 {
-            height: 87vw;
+    .videos-images-guia-section3 {
+        iframe {
+            width: 78vw;
+            height: 44vw;
         }
     }
 }
 
 
+
 @media (max-width: 630px) {
+
+    // GUÍA
+    .images-guia-section1 {
+        .middle-img-guia-section1 {
+            height: 87vw;
+        }
+    }
 
     // CONTACTO
     .contacto-name-surname {
@@ -520,6 +494,11 @@
     .images-index-section4 {
         height: 94vw;
     }
+
+    // GUÍA
+    .img-sides-guia {
+        height: 51.5vw;
+    }
 }
 
 
@@ -529,12 +508,7 @@
     .title-guia-section1 {
         height: 150px;
     }
-}
 
-
-@media (max-width: 500px) {
-
-    // GUÍA
     .title-guia-section2 {
         width: 60vw;
         height: 100px;
@@ -542,9 +516,10 @@
 
     // CONTACTO
     .instagram-post {
-        width: 80vw;
+        width: 78vw;
     }
 }
+
 
 
 @media (max-width: 407px) {
@@ -600,17 +575,6 @@
 
 @media (max-width: 330px) {
 
-    // CONTACTO
-    .contacto-name,
-    .contacto-surname,
-    .contacto-email {
-        width: 85vw;
-    }
-}
-
-
-@media (max-width: 326px) {
-
     // FOOTER
     footer {
         .copyright {
@@ -620,5 +584,12 @@
 
     .icon-array {
         margin-left: -20px;
+    }
+
+    // CONTACTO
+    .contacto-name,
+    .contacto-surname,
+    .contacto-email {
+        width: 85vw;
     }
 }
