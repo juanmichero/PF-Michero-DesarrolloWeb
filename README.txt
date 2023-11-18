@@ -1,9 +1,5 @@
 ...
 
-Proyecto final de Desarrollo Web. Juan Pedro Michero.
-
-...
-
-Puede visualizarse el sitio desde tecladosmecanicoscustom.free.nf
+Proyecto final de JavaScript. Juan Pedro Michero.
 
 ...
