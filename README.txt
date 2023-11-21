@@ -1,5 +1,5 @@
 ...
 
-Proyecto final de JavaScript. Juan Pedro Michero.
+Proyecto final Coder House. Juan Pedro Michero.
 
 ...
