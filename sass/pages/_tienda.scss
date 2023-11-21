@@ -1,0 +1,40 @@
+// TIENDA
+
+#grid {
+    display: grid; 
+    grid-template-columns: 1.5fr 0.5fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    ". ."; 
+}
+
+.div-card {
+    box-shadow: $boxshadowsimg;
+    border: $bordersections;
+}
+
+.div-card-body {
+    background-color: $green;
+    border-radius: 2px;
+    font-size: 18px;
+}
+
+.card-title {
+    font-size: 27px;
+    color: #000000;
+}
+
+.boton-anadir {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: $grey;
+
+    &:hover {
+        border: 2px solid rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+.input-cantidad {
+    border: 2px solid rgb(0, 0, 0);
+}

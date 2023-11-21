@@ -12389,6 +12389,43 @@ footer .terms a {
   box-shadow: 5px 3px 8px 2px rgb(204, 204, 204);
 }
 
+#grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: ". .";
+}
+
+.div-card {
+  box-shadow: 5px 3px 8px 2px rgb(204, 204, 204);
+  border: 3px solid rgb(0, 0, 0);
+}
+
+.div-card-body {
+  background-color: rgb(35, 206, 107);
+  border-radius: 2px;
+  font-size: 18px;
+}
+
+.card-title {
+  font-size: 27px;
+  color: #000000;
+}
+
+.boton-anadir {
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(184, 197, 214);
+}
+.boton-anadir:hover {
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
+
+.input-cantidad {
+  border: 2px solid rgb(0, 0, 0);
+}
+
 .contacto {
   display: flex;
   justify-content: space-evenly;
@@ -12666,6 +12703,11 @@ footer .terms a {
   .col-lg iframe {
     width: 83vw;
     height: 55vw;
+  }
+  #grid {
+    grid-template-columns: 1.5fr;
+    grid-template-rows: 1fr 0.5fr;
+    grid-template-areas: "." ".";
   }
 }
 @media (max-width: 940px) {

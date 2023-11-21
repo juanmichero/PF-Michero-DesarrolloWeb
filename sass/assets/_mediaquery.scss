@@ -282,7 +282,7 @@
     }
 
     
-
+    // INDEX
     .text-index-section5, .index-section1 p {
         width: 80vw;
     }
@@ -312,6 +312,15 @@
             height: 55vw;
         }
     } 
+
+    // TIENDA
+    #grid {
+        grid-template-columns: 1.5fr; 
+        grid-template-rows: 1fr 0.5fr; 
+        grid-template-areas: 
+        "." 
+        ".";
+    }
 }
 
 
