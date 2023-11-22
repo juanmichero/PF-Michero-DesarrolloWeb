@@ -55,9 +55,22 @@ function renderizarProductos(productosARenderizar) {
         // Agregar al carrito (evento de click)
         botonAnadir.addEventListener("click", () => {
 
-            
+            let cantidadAAgregar = inputCantidad.value;
 
-        })
+            if (cantidadAAgregar > productoARenderizar.stock) {
+
+                alert("STOCK INSUFICIENTE"); // sweetalert
+
+            } else if (cantidadAAgregar < 1){
+
+                alert("INGRESE UNA CANTIDAD VÁLIDA");
+
+            } else {
+
+                agregarAlCarrito(productoARenderizar, cantidadAAgregar);
+                
+            }
+        });
 
         // Insertar elementos
         divAnadirCarrito.append(botonAnadir, inputCantidad)
@@ -65,8 +78,32 @@ function renderizarProductos(productosARenderizar) {
         divCard.append(divCardBody);
         container.append(divCard);
 
+    }
+}
+
+// Agregar los productos al carrito
+function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
+
+    const indexProductoAAgregar = carrito.findIndex( (el) => {
+
+        return el.id === productoAAgregar.id;
+
+    });
+
+    // Modifico stock y cantidadCarrito del producto en el array original
+    productos[productoAAgregar.id].cantidadCarrito += parseInt(cantidadAAgregar);
+    productos[productoAAgregar.id].stock -= parseInt(cantidadAAgregar);
+
+    // Si el producto no estaba ya en el carrito, lo agrego
+    if (indexProductoAAgregar === -1) {
+
+        carrito.push(productoAAgregar);
 
     }
+
+    renderizarProductos(productos);
+
+    renderizarTablaCarrito(carrito);
 
 }
 
@@ -87,7 +124,7 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
         tdPrecio.innerText = `$${productoCarritoARenderizar.precio}`;
 
         const tdCantidad = document.createElement("td");
-        tdCantidad.innerText = productoCarritoARenderizar.cantidad;
+        tdCantidad.innerText = productoCarritoARenderizar.cantidadCarrito;
 
         const tdEliminar = document.createElement("td");
 
@@ -96,7 +133,15 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
         botonEliminar.innerText = "Eliminar";
 
         // Eliminar del carrito (evento de click)
+        botonEliminar.addEventListener("click", () => {
 
+            let cantidadAEliminar = productoCarritoARenderizar.cantidadCarrito;
+
+            eliminarProducto(productoCarritoARenderizar, cantidadAEliminar);
+
+            eliminarDelCarrito(productoCarritoARenderizar);
+
+        });
 
         // Insertar elementos
         tdEliminar.append(botonEliminar);
@@ -104,6 +149,43 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
         tbody.append(tr);
     }
 } 
+
+// Eliminar producto del carrito
+function eliminarProducto(productoAEliminar, cantidadAEliminar) {
+
+    const indexProductoAEliminar = productos.findIndex( (el) => {
+
+        return productoAEliminar.id === el.id;
+
+    });
+
+    if (indexProductoAEliminar !== -1) {
+
+        // Modifico stock y cantidadCarrito del producto en el array original
+        productos[indexProductoAEliminar].cantidadCarrito -= parseInt(cantidadAEliminar);
+
+        productos[indexProductoAEliminar].stock += parseInt(cantidadAEliminar);
+
+    }
+
+    renderizarProductos(productos);
+
+}
+
+function eliminarDelCarrito(productoAEliminar) {
+
+    const indexProductoAEliminar = carrito.findIndex( (el) => {
+
+        return productoAEliminar.id === el.id;
+
+    });
+
+    // Elimino el producto del carrito
+    carrito.splice(indexProductoAEliminar, 1);
+
+    renderizarTablaCarrito(carrito);
+
+}
 
 // Variables
 
@@ -123,6 +205,8 @@ const productos = [
 ];
 
 let carrito = [];
+
+let cantidadAAgregar = 0;
 
 // Inicio
 renderizarProductos(productos);
