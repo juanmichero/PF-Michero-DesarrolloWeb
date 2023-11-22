@@ -14,7 +14,7 @@ class Producto {
 
 // Funciones
 
-// Renderizar los productos ingresdos al front
+// Renderizar los productos ingresados al front
 function renderizarProductos(productosARenderizar) {
 
     const container = document.getElementById("container");
@@ -22,7 +22,6 @@ function renderizarProductos(productosARenderizar) {
 
     for (const productoARenderizar of productosARenderizar) {
 
-        // Crear los elementos para renderizar en el front
         const divCard = document.createElement("div");
         divCard.className = "card m-2 div-card";
         divCard.style = "width: 20rem;";
@@ -36,7 +35,7 @@ function renderizarProductos(productosARenderizar) {
 
         const p = document.createElement("p");
         p.className = "card-text";
-        p.innerHTML = `Categoría: <strong>${productoARenderizar.categoria}</strong><br>Precio: <strong>$${productoARenderizar.precio}</strong><br>Stock: <strong>${productoARenderizar.stock}</strong>`;
+        p.innerHTML = `Precio: <strong>$${productoARenderizar.precio}</strong><br>Stock: <strong>${productoARenderizar.stock}</strong>`;
 
         const divAnadirCarrito = document.createElement("div");
         divAnadirCarrito.className = "d-inline-flex align-items-center justify-content-between";
@@ -81,25 +80,37 @@ function renderizarProductos(productosARenderizar) {
     }
 }
 
-// Agregar los productos al carrito
+// Agregar los productos al carrito y al Local Storage
 function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
-
-    const indexProductoAAgregar = carrito.findIndex( (el) => {
-
-        return el.id === productoAAgregar.id;
-
-    });
 
     // Modifico stock y cantidadCarrito del producto en el array original
     productos[productoAAgregar.id].cantidadCarrito += parseInt(cantidadAAgregar);
     productos[productoAAgregar.id].stock -= parseInt(cantidadAAgregar);
 
-    // Si el producto no estaba ya en el carrito, lo agrego
-    if (indexProductoAAgregar === -1) {
 
-        carrito.push(productoAAgregar);
+    // Si el carrito está vacío, agrego el producto
+    if (carrito === null) {
+
+        carrito = [productoAAgregar];
+
+    } else {
+
+        const indexProductoAAgregar = carrito.findIndex( (el) => {
+
+            return el.id === productoAAgregar.id;
+    
+        });
+    
+        // Si el producto no estaba ya en el carrito, lo agrego
+        if (indexProductoAAgregar === -1) {
+    
+            carrito.push(productoAAgregar);
+    
+        }
 
     }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 
     renderizarProductos(productos);
 
@@ -148,9 +159,9 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
         tr.append(tdNombre, tdPrecio, tdCantidad, tdEliminar);
         tbody.append(tr);
     }
-} 
+}
 
-// 
+// Modificar stock y cantidadCarrito del producto en el array productos
 function eliminarProducto(productoAEliminar, cantidadAEliminar) {
 
     const indexProductoAEliminar = productos.findIndex( (el) => {
@@ -161,7 +172,6 @@ function eliminarProducto(productoAEliminar, cantidadAEliminar) {
 
     if (indexProductoAEliminar !== -1) {
 
-        // Modifico stock y cantidadCarrito del producto en el array original
         productos[indexProductoAEliminar].cantidadCarrito -= parseInt(cantidadAEliminar);
 
         productos[indexProductoAEliminar].stock += parseInt(cantidadAEliminar);
@@ -172,7 +182,7 @@ function eliminarProducto(productoAEliminar, cantidadAEliminar) {
 
 }
 
-// Eliminar producto del carrito
+// Eliminar producto del carrito y del Local Storage
 function eliminarDelCarrito(productoAEliminar) {
 
     const indexProductoAEliminar = carrito.findIndex( (el) => {
@@ -183,12 +193,38 @@ function eliminarDelCarrito(productoAEliminar) {
 
     carrito.splice(indexProductoAEliminar, 1);
 
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
     renderizarTablaCarrito(carrito);
 
 }
 
+// Obtengo el carrito del Local Storage, para renderizar la tabla en el front
+function obtenerCarritoDelLS() {
+
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+
+    if (carrito) {
+
+        renderizarTablaCarrito(carrito);
+
+    }
+}
+
+// function obtenerProductosDelLS() {
+
+//     const productosLS = JSON.parse(localStorage.getItem("productos"));
+
+//     if (productosLS) {
+
+//         renderizarProductos(productosLS);
+
+//     }
+
+// }
+
 // Inicializar el select para filtrar productos por categoría
-function inicializarFiltro() {
+function inicializarSelectFiltro() {
 
     const select = document.getElementById("selectFiltro");
 
@@ -294,4 +330,8 @@ let cantidadAAgregar = 0;
 // Inicio
 renderizarProductos(productos);
 
-inicializarFiltro();
+inicializarSelectFiltro();
+
+obtenerCarritoDelLS();
+
+// obtenerProductosDelLS();
