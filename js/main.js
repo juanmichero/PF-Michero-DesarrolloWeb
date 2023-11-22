@@ -150,7 +150,7 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
     }
 } 
 
-// Eliminar producto del carrito
+// 
 function eliminarProducto(productoAEliminar, cantidadAEliminar) {
 
     const indexProductoAEliminar = productos.findIndex( (el) => {
@@ -172,6 +172,7 @@ function eliminarProducto(productoAEliminar, cantidadAEliminar) {
 
 }
 
+// Eliminar producto del carrito
 function eliminarDelCarrito(productoAEliminar) {
 
     const indexProductoAEliminar = carrito.findIndex( (el) => {
@@ -180,10 +181,92 @@ function eliminarDelCarrito(productoAEliminar) {
 
     });
 
-    // Elimino el producto del carrito
     carrito.splice(indexProductoAEliminar, 1);
 
     renderizarTablaCarrito(carrito);
+
+}
+
+// Inicializar el select para filtrar productos por categoría
+function inicializarFiltro() {
+
+    const select = document.getElementById("selectFiltro");
+
+    select.addEventListener("click", () => {
+
+        const value = select.value;
+
+        switch (value) {
+
+            case "default":
+
+                filtrarDefault();
+
+                break;
+
+            case "teclados":
+
+                filtrarTeclados();
+
+                break;
+
+            case "switches":
+
+                filtrarSwitches();
+
+                break;
+
+            case "keycaps":
+
+                filtrarKeycaps();
+
+                break;
+
+        }
+    });
+}
+
+function filtrarDefault() {
+
+    const productosFiltrados = productos.sort( (a, b) => a.id - b.id );
+
+    renderizarProductos(productosFiltrados);
+
+}
+
+function filtrarTeclados() {
+
+    const productosFiltrados = productos.filter( (el) => {
+
+        return el.categoria === "teclados";
+
+    });
+
+    renderizarProductos(productosFiltrados);
+
+}
+
+function filtrarSwitches() {
+
+    const productosFiltrados = productos.filter( (el) => {
+
+        return el.categoria === "switches";
+
+    });
+
+    renderizarProductos(productosFiltrados);
+
+}
+
+function filtrarKeycaps() {
+
+    const productosFiltrados = productos.filter( (el) => {
+
+        return el.categoria === "keycaps";
+
+    });
+
+    renderizarProductos(productosFiltrados);
 
 }
 
@@ -210,3 +293,5 @@ let cantidadAAgregar = 0;
 
 // Inicio
 renderizarProductos(productos);
+
+inicializarFiltro();
