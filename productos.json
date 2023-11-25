@@ -1,0 +1,98 @@
+[
+    {
+        "id": 0,
+        "nombre": "QK65",
+        "categoria": "teclados",
+        "precio": 220,
+        "stock": 20,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 1,
+        "nombre": "Cycle7",
+        "categoria": "teclados",
+        "precio": 130,
+        "stock": 25,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 2,
+        "nombre": "Tokyo60",
+        "categoria": "teclados",
+        "precio": 100,
+        "stock": 30,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 3,
+        "nombre": "Unikorn",
+        "categoria": "teclados",
+        "precio": 500,
+        "stock": 5,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 4,
+        "nombre": "Oil Kings",
+        "categoria": "switches",
+        "precio": 50,
+        "stock": 20,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 5,
+        "nombre": "Crystals",
+        "categoria": "switches",
+        "precio": 30,
+        "stock": 30,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 6,
+        "nombre": "Rose Reds",
+        "categoria": "switches",
+        "precio": 20,
+        "stock": 40,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 7,
+        "nombre": "Kang Whites",
+        "categoria": "switches",
+        "precio": 15,
+        "stock": 50,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 8,
+        "nombre": "Watermelon",
+        "categoria": "keycaps",
+        "precio": 100,
+        "stock": 20,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 9,
+        "nombre": "Monokai",
+        "categoria": "keycaps",
+        "precio": 120,
+        "stock": 15,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 10,
+        "nombre": "WoB",
+        "categoria": "keycaps",
+        "precio": 75,
+        "stock": 30,
+        "cantidadCarrito": 0 
+    },
+    {
+        "id": 11,
+        "nombre": "Godspeed",
+        "categoria": "keycaps",
+        "precio": 160,
+        "stock": 10,
+        "cantidadCarrito": 0 
+    }
+]

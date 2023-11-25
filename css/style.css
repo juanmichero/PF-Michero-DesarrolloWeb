@@ -12704,11 +12704,6 @@ footer .terms a {
     width: 83vw;
     height: 55vw;
   }
-  #grid {
-    grid-template-columns: 1.5fr;
-    grid-template-rows: 1fr 0.5fr;
-    grid-template-areas: "." ".";
-  }
 }
 @media (max-width: 940px) {
   .index-section2 img {
@@ -12716,6 +12711,13 @@ footer .terms a {
   }
   .text-guia-section4 {
     width: 85vw;
+  }
+}
+@media (max-width: 840px) {
+  #grid {
+    grid-template-columns: 1.5fr;
+    grid-template-rows: 1fr 0.5fr;
+    grid-template-areas: "." ".";
   }
 }
 @media (max-width: 830px) {
