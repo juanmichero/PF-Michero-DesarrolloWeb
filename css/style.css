@@ -12415,15 +12415,26 @@ footer .terms a {
 
 .boton-anadir {
   border: 2px solid rgb(0, 0, 0);
-  background-color: rgb(184, 197, 214);
+  background-color: rgb(202, 215, 231);
 }
 .boton-anadir:hover {
   border: 2px solid rgb(0, 0, 0);
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(184, 197, 214);
 }
 
 .input-cantidad {
   border: 2px solid rgb(0, 0, 0);
+}
+
+.boton-finalizar {
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(39, 223, 115);
+  font-weight: 600;
+  font-size: 17px;
+}
+.boton-finalizar:hover {
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(35, 206, 107);
 }
 
 .contacto {

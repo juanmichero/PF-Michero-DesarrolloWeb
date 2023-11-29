@@ -27,14 +27,27 @@
 
 .boton-anadir {
     border: 2px solid rgb(0, 0, 0);
-    background-color: $grey;
+    background-color: rgb(202, 215, 231);
 
     &:hover {
         border: 2px solid rgb(0, 0, 0);
-        background-color: rgb(255, 255, 255);
+        background-color: $grey;
     }
 }
 
 .input-cantidad {
     border: 2px solid rgb(0, 0, 0);
+}
+
+.boton-finalizar {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(39, 223, 115);
+    
+    font-weight: 600;
+    font-size: 17px;
+
+    &:hover {
+        border: 2px solid rgb(0, 0, 0);
+        background-color: $green;
+    }
 }

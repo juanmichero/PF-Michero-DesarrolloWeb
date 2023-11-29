@@ -1,17 +1,3 @@
-// Clases
-
-// class Producto {
-
-//     constructor(id, nombre, categoria, precio, stock, cantidadCarrito) {
-//         this.id = id;
-//         this.nombre = nombre;
-//         this.categoria = categoria;
-//         this.precio = precio;
-//         this.stock = stock;
-//         this.cantidadCarrito = cantidadCarrito;
-//     }
-// }
-
 // Funciones
 
 // Renderizar los productos ingresados al front
@@ -59,21 +45,25 @@ function renderizarProductos(productosARenderizar) {
             if (cantidadAAgregar > productoARenderizar.stock) {
 
                 Swal.fire({
-                    position: 'center',
-                    icon: 'warning',
-                    title: 'STOCK INSUFICIENTE',
+
+                    position: "center",
+                    icon: "warning",
+                    title: "STOCK INSUFICIENTE",
                     showConfirmButton: false,
                     timer: 1200
+
                   });
 
             } else if (cantidadAAgregar < 1){
 
                 Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'INGRESE UNA CANTIDAD VÁLIDA',
+
+                    position: "center",
+                    icon: "error",
+                    title: "INGRESE UNA CANTIDAD VÁLIDA",
                     showConfirmButton: false,
                     timer: 1200
+
                   });
 
             } else {
@@ -92,7 +82,7 @@ function renderizarProductos(productosARenderizar) {
     }
 }
 
-// Agregar los productos al carrito y al Local Storage
+// Modificar stock y cantidadCarrito del producto en el array productos, y agregar producto al carrito y al Local Storage
 function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
 
     // Modifico stock y cantidadCarrito del producto en el array original
@@ -101,7 +91,6 @@ function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
 
 
     // Si el carrito está vacío, agrego el producto
-    
     if (carrito === null) {
 
         carrito = [productoAAgregar];
@@ -174,43 +163,7 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
     }
 }
 
-// Mostrar alert al eliminar un producto del carrito ////////////// USAR SWITCH
-function alertEliminarCarrito(productoCarritoARenderizar) {
-
-    if (productoCarritoARenderizar.categoria === "switches") {
-
-        Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: productoCarritoARenderizar.nombre + ' han sido eliminados del carrito',
-            showConfirmButton: false,
-            timer: 1300
-          });
-
-    } else if (productoCarritoARenderizar.categoria === "keycaps") {
-
-        Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: productoCarritoARenderizar.nombre + ' han sido eliminadas del carrito',
-            showConfirmButton: false,
-            timer: 1300
-          });
-
-    } else {
-
-        Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: productoCarritoARenderizar.nombre + ' ha sido eliminado del carrito',
-            showConfirmButton: false,
-            timer: 1300
-          });
-
-    }
-}
-
-// Modificar stock y cantidadCarrito del producto en el array productos
+// Modificar stock y cantidadCarrito del producto en el array productos ///////////// NOMBRE FUNCION
 function eliminarProducto(productoAEliminar, cantidadAEliminar) {
 
     const indexProductoAEliminar = productos.findIndex( (el) => {
@@ -244,6 +197,135 @@ function eliminarDelCarrito(productoAEliminar) {
 
 }
 
+// Mostrar alert al eliminar un producto del carrito
+function alertEliminarCarrito(productoCarritoARenderizar) {
+
+    const categoria = productoCarritoARenderizar.categoria;
+
+    switch (categoria) {
+
+        case "switches":
+
+            Swal.fire({
+
+                icon: "warning",
+                title: productoCarritoARenderizar.nombre + " han sido eliminados del carrito",
+                showConfirmButton: false,
+                timer: 1300
+
+            });
+
+            break;
+        
+        case "keycaps":
+
+            Swal.fire({
+
+                icon: "warning",
+                title: productoCarritoARenderizar.nombre + " han sido eliminadas del carrito",
+                showConfirmButton: false,
+                timer: 1300
+
+            });
+
+            break;
+
+        case "teclados":
+
+            Swal.fire({
+
+                icon: "warning",
+                title: productoCarritoARenderizar.nombre + " ha sido eliminado del carrito",
+                showConfirmButton: false,
+                timer: 1300
+
+            });
+
+            break;
+            
+    }
+
+}
+
+// Botón para finalizar compra
+function botonFinalizar() {
+
+    const botonFinalizar = document.getElementById("finalizar");
+
+    botonFinalizar.addEventListener("click", () => {
+
+        if (carrito.length > 0) {
+
+            alertBotonFinalizar();
+
+        } else {
+
+            Swal.fire({
+
+                icon: "warning",
+                title: "El carrito está vacío",
+                showConfirmButton: false,
+                timer: 1300
+
+              });
+
+        }
+    });
+}
+
+// Mostrar alert y eliminar productos del carrito
+function alertBotonFinalizar() {
+
+    Swal.fire({
+
+        title: "¿Seguro que desea finalizar la compra?",
+        text: "El total es $" + totalProductos(),
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#23ce6b",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Finalizar",
+        cancelButtonText: "Cancelar"
+
+      }).then((result) => {
+
+        if (result.isConfirmed) {
+
+          Swal.fire({
+
+            title: "¡Compra realizada con éxito!",
+            text: "",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1300
+
+          });
+
+          carrito = [];
+
+          console.log(carrito);
+
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+
+          renderizarTablaCarrito(carrito);
+
+        }
+
+      });
+}
+
+function totalProductos() {
+    
+    const total = carrito.reduce( (acc, obj) => {
+
+        return acc + (obj.precio * obj.cantidadCarrito);
+
+    }, 0);
+
+    return total;
+
+}
+
 // Obtengo el carrito del Local Storage, para renderizar la tabla en el front
 function obtenerCarritoLS() {
 
@@ -255,146 +337,34 @@ function obtenerCarritoLS() {
 
 // Obtengo los productos del archivo JSON productos.json
 function obtenerProductosJSON() {
-
-        fetch('../productos.json').then( (response) => {
+ 
+        fetch("../productos.json").then( (response) => {
 
             return response.json();
 
         }).then( (resJson) => {
 
-            // Pusheo los objetos de productos.json al array vacío "productos"
+            // Pusheo los objetos de productos.json al array vacío `productos`
             productos.push(...resJson);
 
-            // Renderizo los productos al front
-            renderizarProductos(productos);
+            // Si no hay nada en el carrito, renderizo los productos del array `productos`
+            if (carrito === null) {
 
-            localStorage.setItem("productos", JSON.stringify(productos));
+                renderizarProductos(productos);
 
+                localStorage.setItem("productos", JSON.stringify(productos));
+
+            // Si hay algo en el carrito, obtengo los productos del Local Storage y los renderizo
+            } else {
+
+                productos = JSON.parse(localStorage.getItem("productos"));
+
+                renderizarProductos(productos);
+
+            }
+            
         });
 }
-
-// Inicializar el select para ordenar los productos por nombre y precio
-/* function inicializarSelectOrden() {
-
-    const select = document.getElementById("selectOrden");
-
-    select.addEventListener("click", () => {
-
-        const value = select.value;
-
-        switch (value) {
-
-            case "default":
-
-                filtrarDefault();
-
-                break;
-
-            case "precioA":
-
-                ordenarPorPrecioA();
-
-                break;
-
-            case "precioD":
-
-                ordenarPorPrecioD();
-
-                break;
-
-            case "nombreAZ":
-
-                ordenarPorNombreAZ();
-
-                break;
-
-            case "nombreZA":
-
-                ordenarPorNombreZA();
-
-                break;    
-
-        }
-    });
-} */
-
-/* function ordenarPorPrecioA() {
-
-    const productosOrdenados = productos.sort((a, b) => {
-
-        if (a.precio > b.precio) {
-
-            return 1;
-
-        } else if (a.precio < b.precio) {
-
-            return -1;
-        }
-
-        return 0;
-    });
-
-    renderizarProductos(productosOrdenados);
-} */
-
-/* function ordenarPorPrecioD() {
-
-    const productosOrdenados = productos.sort((a, b) => {
-
-        if (a.precio > b.precio) {
-
-            return -1;
-
-        } else if (a.precio < b.precio) {
-
-            return 1;
-        }
-
-        return 0;
-    });
-
-    renderizarProductos(productosOrdenados);
-} */
-
-/* function ordenarPorNombreAZ() {
-
-    const productosOrdenados = productos.sort((a, b) => {
-
-        if (a.nombre.toUpperCase() > b.nombre.toUpperCase()) {
-
-            return 1;
-
-        } else if (a.nombre.toUpperCase() < b.nombre.toUpperCase()) {
-
-            return -1;
-
-        }
-
-        return 0;
-    });
-
-    renderizarProductos(productosOrdenados);
-} */
-
-/* function ordenarPorNombreZA() {
-
-    const productosOrdenados = productos.sort((a, b) => {
-
-        if (a.nombre.toUpperCase() > b.nombre.toUpperCase()) {
-
-            return -1;
-
-        } else if (a.nombre.toUpperCase() < b.nombre.toUpperCase()) {
-
-            return 1;
-
-        }
-
-        return 0;
-    });
-
-    renderizarProductos(productosOrdenados);
-} */
 
 // Inicializar el select para filtrar productos por categoría
 function inicializarSelectFiltro() {
@@ -481,20 +451,7 @@ function filtrarKeycaps() {
 
 // Variables
 
-const productos = [
-    // new Producto(0, "QK65", "teclados", 220, 20, 0),
-    // new Producto(1, "Cycle7", "teclados", 130, 25, 0),
-    // new Producto(2, "Tokyo60", "teclados", 100, 30, 0),
-    // new Producto(3, "Unikorn", "teclados", 500, 5, 0),
-    // new Producto(4, "Oil Kings", "switches", 50, 20, 0),
-    // new Producto(5, "Crystals", "switches", 30, 30, 0),
-    // new Producto(6, "Rose Reds", "switches", 20, 40, 0),
-    // new Producto(7, "Kang Whites", "switches", 15, 50, 0),
-    // new Producto(8, "Watermelon", "keycaps", 100, 20, 0),
-    // new Producto(9, "Monokai", "keycaps", 120, 15, 0),
-    // new Producto(10, "WoB", "keycaps", 75, 30, 0),
-    // new Producto(11, "Godspeed", "keycaps", 160, 10, 0),
-];
+let productos = [];
 
 let carrito = [];
 
@@ -504,12 +461,8 @@ let cantidadAAgregar = 0;
 
 obtenerProductosJSON();
 
-// localStorage.setItem("productos", JSON.stringify(productos));
-
-// renderizarProductos(productos);
-
 inicializarSelectFiltro();
 
 obtenerCarritoLS();
 
-// obtenerProductosDelLS();
+botonFinalizar()
