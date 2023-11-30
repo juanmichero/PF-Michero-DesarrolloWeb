@@ -21,7 +21,7 @@ function renderizarProductos(productosARenderizar) {
 
         const p = document.createElement("p");
         p.className = "card-text";
-        p.innerHTML = `Precio: <strong>$${productoARenderizar.precio}</strong><br>Stock: <strong>${productoARenderizar.stock}</strong>`;
+        p.innerHTML = `Categoria: <strong>${productoARenderizar.categoria}</strong><br>Precio: <strong>$${productoARenderizar.precio}</strong><br>Stock: <strong>${productoARenderizar.stock}</strong>`;
 
         const divAnadirCarrito = document.createElement("div");
         divAnadirCarrito.className = "d-inline-flex align-items-center justify-content-between";
@@ -89,9 +89,8 @@ function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
     productos[productoAAgregar.id].cantidadCarrito += parseInt(cantidadAAgregar);
     productos[productoAAgregar.id].stock -= parseInt(cantidadAAgregar);
 
-
     // Si el carrito está vacío, agrego el producto
-    if (carrito === null) {
+    if (carrito === null || carrito.length === 0) {
 
         carrito = [productoAAgregar];
 
@@ -102,9 +101,17 @@ function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
             return el.id === productoAAgregar.id;
     
         });
-    
-        // Si el producto no estaba ya en el carrito, lo agrego
-        indexProductoAAgregar === -1 && carrito.push(productoAAgregar);
+
+        if (indexProductoAAgregar === -1) {
+
+            carrito.push(productoAAgregar);
+
+        } else {
+
+            carrito.splice(indexProductoAAgregar, 1);
+            carrito.push(productoAAgregar);
+
+        }
 
     }
 
@@ -301,9 +308,9 @@ function alertBotonFinalizar() {
 
           });
 
-          carrito = [];
+          productosCompradosLS(carrito);
 
-          console.log(carrito);
+          carrito = [];
 
           localStorage.setItem("carrito", JSON.stringify(carrito));
 
@@ -314,6 +321,41 @@ function alertBotonFinalizar() {
       });
 }
 
+// Añado los productos comprados al Local Storage
+function productosCompradosLS() {
+
+    if (productosComprados === null) {
+
+        carrito.forEach( (el) => {
+
+            productosComprados = [el];
+
+        });
+
+    } else {
+
+        carrito.forEach( (el) => {
+
+            productosComprados.push(el);
+
+        });
+
+    }
+
+    // for (const el of carrito) {
+
+    //     productosComprados.push(el);
+
+    // }
+
+    // productosComprados.push(carrito);
+    localStorage.setItem("productosComprados", JSON.stringify(productosComprados));
+    
+    console.log(productosComprados);
+
+}
+
+// Calcular el precio total de los productos al finalizar la compra
 function totalProductos() {
     
     const total = carrito.reduce( (acc, obj) => {
@@ -335,117 +377,52 @@ function obtenerCarritoLS() {
 
 }
 
+function obtenerProductosCompradosLS() {
+
+    productosComprados = JSON.parse(localStorage.getItem("productosComprados"));
+
+    return productosComprados;
+
+}
+
 // Obtengo los productos del archivo JSON productos.json
 function obtenerProductosJSON() {
  
+    return new Promise( (resolve, reject) => {
+
         fetch("../productos.json").then( (response) => {
 
             return response.json();
-
+    
         }).then( (resJson) => {
-
+    
             // Pusheo los objetos de productos.json al array vacío `productos`
             productos.push(...resJson);
+    
+            resolve();
 
-            // Si no hay nada en el carrito, renderizo los productos del array `productos`
-            if (carrito === null) {
-
-                renderizarProductos(productos);
-
-                localStorage.setItem("productos", JSON.stringify(productos));
-
-            // Si hay algo en el carrito, obtengo los productos del Local Storage y los renderizo
-            } else {
-
-                productos = JSON.parse(localStorage.getItem("productos"));
-
-                renderizarProductos(productos);
-
-            }
-            
         });
-}
-
-// Inicializar el select para filtrar productos por categoría
-function inicializarSelectFiltro() {
-
-    const select = document.getElementById("selectFiltro");
-
-    select.addEventListener("click", () => {
-
-        const value = select.value;
-
-        switch (value) {
-
-            case "default":
-
-                filtrarDefault();
-
-                break;
-
-            case "teclados":
-
-                filtrarTeclados();
-
-                break;
-
-            case "switches":
-
-                filtrarSwitches();
-
-                break;
-
-            case "keycaps":
-
-                filtrarKeycaps();
-
-                break;
-
-        }
-    });
-}
-
-function filtrarDefault() {
-
-    const productosFiltrados = productos.sort( (a, b) => a.id - b.id );
-
-    renderizarProductos(productosFiltrados);
-
-}
-
-function filtrarTeclados() {
-
-    const productosFiltrados = productos.filter( (el) => {
-
-        return el.categoria === "teclados";
 
     });
-
-    renderizarProductos(productosFiltrados);
-
 }
 
-function filtrarSwitches() {
+function render() {
 
-    const productosFiltrados = productos.filter( (el) => {
+    // Si no hay nada en el carrito, renderizo los productos del array `productos`
+    if (carrito === null || carrito.length === 0) {
 
-        return el.categoria === "switches";
+        renderizarProductos(productos);
 
-    });
+        localStorage.setItem("productos", JSON.stringify(productos));
 
-    renderizarProductos(productosFiltrados);
+    // Si hay algo en el carrito, obtengo los productos del Local Storage y los renderizo
+    } else {
 
-}
+        productos = JSON.parse(localStorage.getItem("productos"));
 
-function filtrarKeycaps() {
+        renderizarProductos(productos);
 
-    const productosFiltrados = productos.filter( (el) => {
-
-        return el.categoria === "keycaps";
-
-    });
-
-    renderizarProductos(productosFiltrados);
+    }
 
 }
 
@@ -455,14 +432,19 @@ let productos = [];
 
 let carrito = [];
 
+let productosComprados = [];
+
 let cantidadAAgregar = 0;
 
 // Inicio
-
-obtenerProductosJSON();
-
-inicializarSelectFiltro();
-
 obtenerCarritoLS();
 
-botonFinalizar()
+
+
+obtenerProductosJSON().then( () => {
+    obtenerProductosCompradosLS();
+    render();
+    
+});
+
+botonFinalizar();
