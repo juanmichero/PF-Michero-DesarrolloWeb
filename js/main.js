@@ -82,11 +82,11 @@ function renderizarProductos(productosARenderizar) {
     }
 }
 
-// Modificar stock y cantidadCarrito del producto en el array productos, y agregar producto al carrito y al Local Storage
+// Modificar stock y cantidad del producto en el array productos, y agregar producto al carrito y al Local Storage
 function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
 
-    // Modifico stock y cantidadCarrito del producto en el array original
-    productos[productoAAgregar.id].cantidadCarrito += parseInt(cantidadAAgregar);
+    // Modifico stock y cantidad del producto en el array original
+    productos[productoAAgregar.id].cantidad += parseInt(cantidadAAgregar);
     productos[productoAAgregar.id].stock -= parseInt(cantidadAAgregar);
 
     // Si el carrito está vacío, agrego el producto
@@ -142,7 +142,7 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
         tdPrecio.innerText = `$${productoCarritoARenderizar.precio}`;
 
         const tdCantidad = document.createElement("td");
-        tdCantidad.innerText = productoCarritoARenderizar.cantidadCarrito;
+        tdCantidad.innerText = productoCarritoARenderizar.cantidad;
 
         const tdEliminar = document.createElement("td");
 
@@ -153,7 +153,7 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
         // Eliminar del carrito (evento de click)
         botonEliminar.addEventListener("click", () => {
 
-            let cantidadAEliminar = productoCarritoARenderizar.cantidadCarrito;
+            let cantidadAEliminar = productoCarritoARenderizar.cantidad;
 
             eliminarProducto(productoCarritoARenderizar, cantidadAEliminar);
 
@@ -170,7 +170,7 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
     }
 }
 
-// Modificar stock y cantidadCarrito del producto en el array productos ///////////// NOMBRE FUNCION
+// Modificar stock y cantidad del producto en el array productos ///////////// NOMBRE FUNCION
 function eliminarProducto(productoAEliminar, cantidadAEliminar) {
 
     const indexProductoAEliminar = productos.findIndex( (el) => {
@@ -179,7 +179,7 @@ function eliminarProducto(productoAEliminar, cantidadAEliminar) {
 
     });
 
-    indexProductoAEliminar !== -1 && (productos[indexProductoAEliminar].cantidadCarrito -= parseInt(cantidadAEliminar)), (productos[indexProductoAEliminar].stock += parseInt(cantidadAEliminar));
+    indexProductoAEliminar !== -1 && (productos[indexProductoAEliminar].cantidad -= parseInt(cantidadAEliminar)), (productos[indexProductoAEliminar].stock += parseInt(cantidadAEliminar));
 
     localStorage.setItem("productos", JSON.stringify(productos));
 
@@ -261,11 +261,7 @@ function botonFinalizar() {
 
     botonFinalizar.addEventListener("click", () => {
 
-        if (carrito.length > 0) {
-
-            alertBotonFinalizar();
-
-        } else {
+        if (carrito === null || carrito.length < 1) {
 
             Swal.fire({
 
@@ -275,6 +271,10 @@ function botonFinalizar() {
                 timer: 1300
 
               });
+
+        } else {
+
+            alertBotonFinalizar();
 
         }
     });
@@ -308,7 +308,7 @@ function alertBotonFinalizar() {
 
           });
 
-          productosCompradosLS(carrito);
+          productosCompradosLS();
 
           carrito = [];
 
@@ -321,50 +321,44 @@ function alertBotonFinalizar() {
       });
 }
 
-// Añado los productos comprados al Local Storage
-function productosCompradosLS() {
-
-    if (productosComprados === null) {
-
-        carrito.forEach( (el) => {
-
-            productosComprados = [el];
-
-        });
-
-    } else {
-
-        carrito.forEach( (el) => {
-
-            productosComprados.push(el);
-
-        });
-
-    }
-
-    // for (const el of carrito) {
-
-    //     productosComprados.push(el);
-
-    // }
-
-    // productosComprados.push(carrito);
-    localStorage.setItem("productosComprados", JSON.stringify(productosComprados));
-    
-    console.log(productosComprados);
-
-}
-
 // Calcular el precio total de los productos al finalizar la compra
 function totalProductos() {
     
     const total = carrito.reduce( (acc, obj) => {
 
-        return acc + (obj.precio * obj.cantidadCarrito);
+        return acc + (obj.precio * obj.cantidad);
 
     }, 0);
 
     return total;
+
+}
+
+// Añado los productos comprados al Local Storage
+function productosCompradosLS() {
+
+    if (productosComprados === null) {
+
+        productosComprados = [carrito];
+
+    } else {
+
+        productosComprados.push(carrito);
+
+    }
+
+    productos.forEach( (el) => {
+
+        el.cantidad = 0;
+
+    });
+
+    localStorage.setItem("productos", JSON.stringify(productos));
+
+    // const found = carrito.some( (el) => productosComprados.includes(el));
+
+    // productosComprados.push(carrito);
+    localStorage.setItem("compra", JSON.stringify(productosComprados));
 
 }
 
@@ -379,7 +373,7 @@ function obtenerCarritoLS() {
 
 function obtenerProductosCompradosLS() {
 
-    productosComprados = JSON.parse(localStorage.getItem("productosComprados"));
+    productosComprados = JSON.parse(localStorage.getItem("compra"));
 
     return productosComprados;
 
@@ -388,8 +382,6 @@ function obtenerProductosCompradosLS() {
 // Obtengo los productos del archivo JSON productos.json
 function obtenerProductosJSON() {
  
-    return new Promise( (resolve, reject) => {
-
         fetch("../productos.json").then( (response) => {
 
             return response.json();
@@ -399,17 +391,28 @@ function obtenerProductosJSON() {
             // Pusheo los objetos de productos.json al array vacío `productos`
             productos.push(...resJson);
     
-            resolve();
+            render();
 
         });
 
-    });
+}
+
+function carritoVacio() {
+
+    carrito === null || carrito.length === 0;
+
+}
+
+function compraVacia() {
+
+    productosComprados === null || productosComprados.length === 0;
+
 }
 
 function render() {
 
     // Si no hay nada en el carrito, renderizo los productos del array `productos`
-    if (carrito === null || carrito.length === 0) {
+    if (carrito === null || carrito.length === 0 && productosComprados === null) {
 
         renderizarProductos(productos);
 
@@ -430,21 +433,17 @@ function render() {
 
 let productos = [];
 
-let carrito = [];
+let carrito = null;
 
-let productosComprados = [];
+let productosComprados = null;
 
 let cantidadAAgregar = 0;
 
 // Inicio
 obtenerCarritoLS();
 
+obtenerProductosCompradosLS();
 
-
-obtenerProductosJSON().then( () => {
-    obtenerProductosCompradosLS();
-    render();
-    
-});
+obtenerProductosJSON();
 
 botonFinalizar();

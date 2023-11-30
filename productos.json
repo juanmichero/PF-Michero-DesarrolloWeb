@@ -5,7 +5,7 @@
         "categoria": "teclados",
         "precio": 220,
         "stock": 20,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 1,
@@ -13,7 +13,7 @@
         "categoria": "teclados",
         "precio": 130,
         "stock": 25,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 2,
@@ -21,7 +21,7 @@
         "categoria": "teclados",
         "precio": 100,
         "stock": 30,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 3,
@@ -29,7 +29,7 @@
         "categoria": "teclados",
         "precio": 500,
         "stock": 5,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 4,
@@ -37,7 +37,7 @@
         "categoria": "switches",
         "precio": 50,
         "stock": 20,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 5,
@@ -45,7 +45,7 @@
         "categoria": "switches",
         "precio": 30,
         "stock": 30,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 6,
@@ -53,7 +53,7 @@
         "categoria": "switches",
         "precio": 20,
         "stock": 40,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 7,
@@ -61,7 +61,7 @@
         "categoria": "switches",
         "precio": 15,
         "stock": 50,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 8,
@@ -69,7 +69,7 @@
         "categoria": "keycaps",
         "precio": 100,
         "stock": 20,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 9,
@@ -77,7 +77,7 @@
         "categoria": "keycaps",
         "precio": 120,
         "stock": 15,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 10,
@@ -85,7 +85,7 @@
         "categoria": "keycaps",
         "precio": 75,
         "stock": 30,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     },
     {
         "id": 11,
@@ -93,6 +93,6 @@
         "categoria": "keycaps",
         "precio": 160,
         "stock": 10,
-        "cantidadCarrito": 0 
+        "cantidad": 0 
     }
 ]
