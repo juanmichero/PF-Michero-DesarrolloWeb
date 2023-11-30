@@ -82,10 +82,10 @@ function renderizarProductos(productosARenderizar) {
     }
 }
 
-// Modificar stock y cantidad del producto en el array productos, y agregar producto al carrito y al Local Storage
+// Agregar los productos al carrito, modificando sus valores en el array `productos`, pusheando al carrito y añadiendo al Local Storage
 function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
 
-    // Modifico stock y cantidad del producto en el array original
+    // Modifico stock y cantidad del producto
     productos[productoAAgregar.id].cantidad += parseInt(cantidadAAgregar);
     productos[productoAAgregar.id].stock -= parseInt(cantidadAAgregar);
 
@@ -102,10 +102,12 @@ function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
     
         });
 
+        // Si el carrito no está vacío, pusheo el producto
         if (indexProductoAAgregar === -1) {
 
             carrito.push(productoAAgregar);
-
+        
+        // Si en el carrito ya estaba el producto, lo saco y lo vuelvo a agregar con la cantidad correspondiente
         } else {
 
             carrito.splice(indexProductoAAgregar, 1);
@@ -115,6 +117,7 @@ function agregarAlCarrito(productoAAgregar, cantidadAAgregar) {
 
     }
 
+    // Subo al Local Storage los cambios en el array de productos y carrito, y renderizo en el front
     localStorage.setItem("productos", JSON.stringify(productos));
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -170,7 +173,7 @@ function renderizarTablaCarrito(productosCarritoARenderizar) {
     }
 }
 
-// Modificar stock y cantidad del producto en el array productos ///////////// NOMBRE FUNCION
+// Modificar stock y cantidad del producto en el array productos
 function eliminarProducto(productoAEliminar, cantidadAEliminar) {
 
     const indexProductoAEliminar = productos.findIndex( (el) => {
@@ -204,7 +207,7 @@ function eliminarDelCarrito(productoAEliminar) {
 
 }
 
-// Mostrar alert al eliminar un producto del carrito
+// Mostrar alert al eliminar un producto del carrito, dependiendo de la categoria
 function alertEliminarCarrito(productoCarritoARenderizar) {
 
     const categoria = productoCarritoARenderizar.categoria;
@@ -274,14 +277,14 @@ function botonFinalizar() {
 
         } else {
 
-            alertBotonFinalizar();
+            finalizarCompra();
 
         }
     });
 }
 
-// Mostrar alert y eliminar productos del carrito
-function alertBotonFinalizar() {
+// Finalizar la compra, mostrando un alert y eliminando los productos del carrito
+function finalizarCompra() {
 
     Swal.fire({
 
@@ -334,19 +337,22 @@ function totalProductos() {
 
 }
 
-// Añado los productos comprados al Local Storage
+// Añado los productos comprados al Local Storage, dividios por compra
 function productosCompradosLS() {
 
+    // Si no hay nada en el array de productos comprados, agrego lo que está en el carrito
     if (productosComprados === null) {
 
         productosComprados = [carrito];
 
+    // Si hay algo, lo pusheo
     } else {
 
         productosComprados.push(carrito);
 
     }
 
+    // Una vez agregados los productos al array de productos comprados, modifico la `cantidad` de cada producto del array de productos original para que vuelva a 0
     productos.forEach( (el) => {
 
         el.cantidad = 0;
@@ -355,9 +361,6 @@ function productosCompradosLS() {
 
     localStorage.setItem("productos", JSON.stringify(productos));
 
-    // const found = carrito.some( (el) => productosComprados.includes(el));
-
-    // productosComprados.push(carrito);
     localStorage.setItem("compra", JSON.stringify(productosComprados));
 
 }
@@ -371,6 +374,7 @@ function obtenerCarritoLS() {
 
 }
 
+// Obtengo los productos comprados del Local Storage, para validar los productos a renderizar en el front
 function obtenerProductosCompradosLS() {
 
     productosComprados = JSON.parse(localStorage.getItem("compra"));
@@ -379,7 +383,7 @@ function obtenerProductosCompradosLS() {
 
 }
 
-// Obtengo los productos del archivo JSON productos.json
+// Obtengo los productos del archivo JSON de productos
 function obtenerProductosJSON() {
  
         fetch("../productos.json").then( (response) => {
@@ -397,21 +401,10 @@ function obtenerProductosJSON() {
 
 }
 
-function carritoVacio() {
-
-    carrito === null || carrito.length === 0;
-
-}
-
-function compraVacia() {
-
-    productosComprados === null || productosComprados.length === 0;
-
-}
-
+// Renderizo los productos al front dependiendo de si hay productos en el carrito o si ya fueron comprados
 function render() {
 
-    // Si no hay nada en el carrito, renderizo los productos del array `productos`
+    // Si no hay nada en el carrito (o en el array de productos comprados), renderizo los productos del array `productos`
     if (carrito === null || carrito.length === 0 && productosComprados === null) {
 
         renderizarProductos(productos);
@@ -440,6 +433,7 @@ let productosComprados = null;
 let cantidadAAgregar = 0;
 
 // Inicio
+
 obtenerCarritoLS();
 
 obtenerProductosCompradosLS();
