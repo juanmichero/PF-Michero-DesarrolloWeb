@@ -3,3 +3,7 @@
 Proyecto final Coder House. Juan Pedro Michero.
 
 ...
+
+Se integró a este proyecto final de JavaScript el trabajo realizado en el curso de Desarrollo Web, para poder darle más estilo y contemplar todos los conocimientos aprendidos en ambos cursos. Este proyecto final es un simulador de e-commerce, y se encuentra en la sección 'Tienda' dentro del sitio.
+
+...
